@@ -1,52 +1,46 @@
-package com.icf.icf_next_Project.entity;
+package com.icf.icf_next_Project.request;
 
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "employee_registeration")
-public class Employee_Registeration 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+
+public class Employee_Registeration_Request 
 {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
-	@Column(name = "employementid",length = 20,nullable = false)
+	
 	private int employementId;
-	@Column(name = "reportingmanagerid",length = 20,nullable = false)
 	private int reportingManagerId;
-	@Column(name = "fname",length = 15 ,nullable = false)
+	@NotEmpty(message = "first name cant be null")
+	@NotEmpty(message = "first name cant be empty")
 	private String fName;
-	@Column(name = "lname",length = 15 ,nullable = false)
+	@NotEmpty(message = "last name cant be null")
+	@NotEmpty(message = "last name cant be empty")
 	private String lName;
-	@Column(name = "designation",length = 25,nullable = false)
+	@NotEmpty(message = "designation cant be null")
+	@NotEmpty(message = "designation cant be empty")
 	private String designation;
-	@Column(name = "department",length = 25 ,nullable = false)
+	@NotEmpty(message = "department cant be null")
+	@NotEmpty(message = "department cant be empty")
 	private String department;
-	@Column(name = "status",length = 15 ,nullable = false)
+	@NotEmpty(message = "status cant be null")
+	@NotEmpty(message = "status cant be empty")
 	private String status;
-	@Column(name = "gender",length = 1,nullable = false)
+	@NotEmpty(message = "gender cant be null")
+	@NotEmpty(message = "gender cant be empty")
 	private String gender;
-	@Column(name = "bloodgroup",length = 2 ,nullable = false)
+	@NotEmpty(message = "bloodGroup cant be null")
+	@NotEmpty(message = "bloodGroup cant be empty")
 	private String bloodGroup;
-	@Column(name = "address",length = 50 ,nullable = false)
+	@NotEmpty(message = "address cant be null")
+	@NotEmpty(message = "address cant be empty")
 	private String address;
-	@Column(name = "dob",length = 10,nullable = false)
+	@Temporal(TemporalType.DATE)
 	private Date dob;
-	@Column(name = "startdate",length = 10 ,nullable = false)
+	@Temporal(TemporalType.DATE)
 	private Date startDate;
-	@Column(name = "enddate",length = 10 ,nullable = false)
+	@Temporal(TemporalType.DATE)
 	private Date endDate;
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
 	public int getEmployementId() {
 		return employementId;
 	}
@@ -125,11 +119,21 @@ public class Employee_Registeration
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-	public Employee_Registeration(long id, int employementId, int reportingManagerId, String fName, String lName,
-			String designation, String department, String status, String gender, String bloodGroup, String address,
-			Date dob, Date startDate, Date endDate) {
+	public Employee_Registeration_Request(
+			@NotEmpty(message = "employementId cant be null") @NotEmpty(message = "employementId cant be empty") int employementId,
+			@NotEmpty(message = "reportingManagerId cant be null") @NotEmpty(message = "reportingManagerId cant be empty") int reportingManagerId,
+			@NotEmpty(message = "first name cant be null") @NotEmpty(message = "first name cant be empty") String fName,
+			@NotEmpty(message = "last name cant be null") @NotEmpty(message = "last name cant be empty") String lName,
+			@NotEmpty(message = "designation cant be null") @NotEmpty(message = "designation cant be empty") String designation,
+			@NotEmpty(message = "department cant be null") @NotEmpty(message = "department cant be empty") String department,
+			@NotEmpty(message = "status cant be null") @NotEmpty(message = "status cant be empty") String status,
+			@NotEmpty(message = "gender cant be null") @NotEmpty(message = "gender cant be empty") String gender,
+			@NotEmpty(message = "bloodGroup cant be null") @NotEmpty(message = "bloodGroup cant be empty") String bloodGroup,
+			@NotEmpty(message = "address cant be null") @NotEmpty(message = "address cant be empty") String address,
+			@NotEmpty(message = "dob cant be null") @NotEmpty(message = "dob cant be empty") Date dob,
+			@NotEmpty(message = "StartDate cant be null") @NotEmpty(message = "StartDate cant be empty") Date startDate,
+			@NotEmpty(message = "EndDate cant be null") @NotEmpty(message = "EndDate cant be empty") Date endDate) {
 		super();
-		this.id = id;
 		this.employementId = employementId;
 		this.reportingManagerId = reportingManagerId;
 		this.fName = fName;
@@ -144,18 +148,17 @@ public class Employee_Registeration
 		this.startDate = startDate;
 		this.endDate = endDate;
 	}
-	public Employee_Registeration() {
+	public Employee_Registeration_Request() {
 		super();
 	}
 	@Override
 	public String toString() {
-		return "Employee_Registeration [id=" + id + ", employementId=" + employementId + ", reportingManagerId="
+		return "Employee_Registeration_Request [employementId=" + employementId + ", reportingManagerId="
 				+ reportingManagerId + ", fName=" + fName + ", lName=" + lName + ", designation=" + designation
 				+ ", department=" + department + ", status=" + status + ", gender=" + gender + ", bloodGroup="
 				+ bloodGroup + ", address=" + address + ", dob=" + dob + ", startDate=" + startDate + ", endDate="
 				+ endDate + "]";
 	}
-	
 	
 	
 }
