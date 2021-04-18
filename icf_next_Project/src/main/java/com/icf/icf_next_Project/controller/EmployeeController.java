@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController
@@ -93,7 +94,7 @@ public class EmployeeController
 	/* ---   Delete All Employee   --- */
 	
 	@DeleteMapping("/alldelete")
-	public ResponseEntity<Object> deleteById()
+	public ResponseEntity<Object> allDelete()
 	{
 		try
 		{
@@ -112,6 +113,15 @@ public class EmployeeController
 		{
 			throw new EmployeeNotfoundException();
 		}
+	}
+	
+	/* ---   Update Operation Perform   --- */
+	/* ---   Update By Specific Id   --- */
+	
+	@PutMapping("/update/{id}")
+	public Employee_Registeration updateEmployee(@Valid @RequestBody Employee_Registeration err, @PathVariable("id") long id)
+	{
+		return es.update(err,id);
 	}
 	
 }

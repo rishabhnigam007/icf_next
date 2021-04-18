@@ -15,4 +15,7 @@ public interface EmployeeRepository extends JpaRepository<Employee_Registeration
 	
 	@Query(value = "select count(employementid) from employee_registeration u where u.employementid=?1",nativeQuery = true)
 	int findByEmployementId(int employementid);
+	
+	@Query(value = "delete from employee_registeration u where u.employementid=:employementid" ,nativeQuery = true)
+	int deletebyemployementid(@Param("employementid")int employementid);
 }

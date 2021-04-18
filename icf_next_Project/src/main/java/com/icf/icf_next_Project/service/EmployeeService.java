@@ -9,4 +9,6 @@ public interface EmployeeService
 	public Employee_Registeration register(@Valid Employee_Registeration_Request reg);
 	public int isEmployeeExists(@Valid String fname,String lname,int employementid);
 	public String getEmployeeById(long id);
+	public Employee_Registeration update(@Valid Employee_Registeration err, long id);
+	public int deletebyemployementid(int id);
 }
