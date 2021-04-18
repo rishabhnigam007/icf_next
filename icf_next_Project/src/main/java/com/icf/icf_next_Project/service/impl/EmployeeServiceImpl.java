@@ -1,10 +1,8 @@
 package com.icf.icf_next_Project.service.impl;
 
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.icf.icf_next_Project.dao.EmployeeRepository;
 import com.icf.icf_next_Project.entity.Employee_Registeration;
 import com.icf.icf_next_Project.exception.EmployementIdAlreadyExistException;
@@ -48,6 +46,12 @@ public class EmployeeServiceImpl implements EmployeeService
 	public int isEmployeeExists(@Valid String fname, String lname, int employementid) 
 	{
 		return er.existsById(fname, lname, employementid);
+	}
+
+	@Override
+	public String getEmployeeById(long id) 
+	{
+		return er.getOne(id).toString();
 	}
 
 }
