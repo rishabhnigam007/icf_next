@@ -15,7 +15,7 @@ import javax.persistence.TemporalType;
 public class Employee_Registeration 
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Column(name = "employementid",length = 20,nullable = false)
 	private int employementId;

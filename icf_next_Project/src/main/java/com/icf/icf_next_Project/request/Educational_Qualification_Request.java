@@ -1,45 +1,30 @@
-package com.icf.icf_next_Project.entity;
+package com.icf.icf_next_Project.request;
 
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
 
-@Entity
-@Table(name = "educational_qualification")
-public class Educational_Qualification
+public class Educational_Qualification_Request 
 {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long eid;
-	@Column(name = "coursetype" ,nullable = false,length = 20)
+	@NotEmpty(message = "Course Type cant be null")
+	@NotEmpty(message = "Course Type cant be empty")
 	private  String courseType;  // part time or full time
 	@Temporal(TemporalType.DATE)
-	@Column(name = "startdate" ,nullable = false)
 	private Date startDate;
 	@Temporal(TemporalType.DATE)
-	@Column(name = "enddate" ,nullable = false)
 	private Date endDate;
-	@Column(name = "institutiontype" ,nullable = false,length = 20)
+	@NotEmpty(message = "Institution Type cant be null")
+	@NotEmpty(message = "Institution Type cant be empty")
 	private String institutionType;    // government or private
-	@Column(name = "institution" ,nullable = false,length = 30)
+	@NotEmpty(message = "Institution cant be null")
+	@NotEmpty(message = "Institution cant be empty")
 	private String institution;
-	@Column(name = "institutionAddress" ,nullable = false,length = 50)
+	@NotEmpty(message = "Institution Address cant be null")
+	@NotEmpty(message = "Institution Address cant be empty")
 	private String institutionAddress;
-	@Column(name = "percentage" ,nullable = false)
 	private int percentage;
 	
-	public long getEid() {
-		return eid;
-	}
-	public void setEid(long eid) {
-		this.eid = eid;
-	}
 	public String getCourseType() {
 		return courseType;
 	}
@@ -82,10 +67,14 @@ public class Educational_Qualification
 	public void setPercentage(int percentage) {
 		this.percentage = percentage;
 	}
-	public Educational_Qualification(long eid, String courseType, Date startDate, Date endDate, String institutionType,
-			String institution, String institutionAddress, int percentage) {
+	public Educational_Qualification_Request(
+			@NotEmpty(message = "Course Type cant be null") @NotEmpty(message = "Course Type cant be empty") String courseType,
+			Date startDate, Date endDate,
+			@NotEmpty(message = "Institution Type cant be null") @NotEmpty(message = "Institution Type cant be empty") String institutionType,
+			@NotEmpty(message = "Institution cant be null") @NotEmpty(message = "Institution cant be empty") String institution,
+			@NotEmpty(message = "Institution Address cant be null") @NotEmpty(message = "Institution Address cant be empty") String institutionAddress,
+			int percentage) {
 		super();
-		this.eid = eid;
 		this.courseType = courseType;
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -94,13 +83,13 @@ public class Educational_Qualification
 		this.institutionAddress = institutionAddress;
 		this.percentage = percentage;
 	}
-	public Educational_Qualification() {
+	public Educational_Qualification_Request() {
 		super();
 	}
 	@Override
 	public String toString() {
-		return "Educational_Qualification [eid=" + eid + ", courseType=" + courseType + ", startDate=" + startDate
-				+ ", endDate=" + endDate + ", institutionType=" + institutionType + ", institution=" + institution
+		return "Educational_Qualification_Request [courseType=" + courseType + ", startDate=" + startDate + ", endDate="
+				+ endDate + ", institutionType=" + institutionType + ", institution=" + institution
 				+ ", institutionAddress=" + institutionAddress + ", percentage=" + percentage + "]";
 	}
 	
