@@ -5,11 +5,13 @@ import java.util.Date;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class Employee_Registeration_Request 
 {
-	
+	@NotNull
 	private int employementId;
+	@NotNull
 	private int reportingManagerId;
 	@NotEmpty(message = "first name cant be null")
 	@NotEmpty(message = "first name cant be empty")

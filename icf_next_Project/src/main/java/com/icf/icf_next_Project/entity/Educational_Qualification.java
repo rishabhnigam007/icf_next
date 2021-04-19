@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "educational_qualification")
@@ -17,18 +19,21 @@ public class Educational_Qualification
 	private long eid;
 	@Column(name = "coursetype" ,nullable = false,length = 20)
 	private  String courseType;  // part time or full time
-	@Column(name = "startdate" ,nullable = false,length = 20)
+	@Temporal(TemporalType.DATE)
+	@Column(name = "startdate" ,nullable = false)
 	private Date startDate;
-	@Column(name = "enddate" ,nullable = false,length = 20)
+	@Temporal(TemporalType.DATE)
+	@Column(name = "enddate" ,nullable = false)
 	private Date endDate;
 	@Column(name = "institutiontype" ,nullable = false,length = 20)
 	private String institutionType;    // government or private
-	@Column(name = "institution" ,nullable = false,length = 20)
+	@Column(name = "institution" ,nullable = false,length = 30)
 	private String institution;
-	@Column(name = "institutionAddress" ,nullable = false,length = 20)
+	@Column(name = "institutionAddress" ,nullable = false,length = 50)
 	private String institutionAddress;
-	@Column(name = "percentage" ,nullable = false,length = 20)
+	@Column(name = "percentage" ,nullable = false)
 	private int percentage;
+	
 	public long getEid() {
 		return eid;
 	}

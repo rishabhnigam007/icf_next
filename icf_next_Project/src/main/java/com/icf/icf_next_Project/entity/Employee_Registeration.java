@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "employee_registeration")
@@ -35,11 +37,14 @@ public class Employee_Registeration
 	private String bloodGroup;
 	@Column(name = "address",length = 50 ,nullable = false)
 	private String address;
-	@Column(name = "dob",length = 10,nullable = false)
+	@Temporal(TemporalType.DATE)
+	@Column(name = "dob",nullable = false)
 	private Date dob;
-	@Column(name = "startdate",length = 10 ,nullable = false)
+	@Temporal(TemporalType.DATE)
+	@Column(name = "startdate",nullable = false)
 	private Date startDate;
-	@Column(name = "enddate",length = 10 ,nullable = false)
+	@Temporal(TemporalType.DATE)
+	@Column(name = "enddate",nullable = false)
 	private Date endDate;
 	public long getId() {
 		return id;

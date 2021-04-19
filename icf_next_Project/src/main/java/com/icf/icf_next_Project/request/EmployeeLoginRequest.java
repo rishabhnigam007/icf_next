@@ -1,6 +1,7 @@
 package com.icf.icf_next_Project.request;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class EmployeeLoginRequest 
 {
@@ -10,6 +11,7 @@ public class EmployeeLoginRequest
 	@NotEmpty(message = "last name cant be null")
 	@NotEmpty(message = "last name cant be empty")
 	private String lname;
+	@NotNull
 	private int employementId;
 	
 	public String getFname() {

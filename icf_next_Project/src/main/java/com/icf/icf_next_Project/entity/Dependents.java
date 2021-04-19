@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "dependents")
@@ -24,8 +26,10 @@ public class Dependents
 	private String gender;
 	@Column(name = "relationship", nullable = false, length = 15)
 	private String relationship;
-	@Column(name = "dob", nullable = false, length = 10)
+	@Column(name = "dob", nullable = false)
+	@Temporal(TemporalType.DATE)
 	private Date dob;
+	
 	public long getDependentid() {
 		return dependentid;
 	}
