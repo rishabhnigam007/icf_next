@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 public class Dependents 
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long dependentid;
 	@Column(name = "firstname", nullable = false, length = 15)
 	private String firstName;

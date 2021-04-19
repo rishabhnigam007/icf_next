@@ -35,7 +35,7 @@ public class EmployeeController
 	public ResponseEntity<Object> register(@Valid @RequestBody Employee_Registeration_Request err)
 	{
 		Employee_Registeration er=es.register(err);
-		return new ResponseEntity<>("Employee is created successfully with Employementid : "+er.getEmployementId(),HttpStatus.OK);
+		return new ResponseEntity<>("Employee is created successfully with Employementid : "+er.getEmployementId(),HttpStatus.CREATED);
 	}
 	
 	/* ---   Read Operation Perform   --- */
