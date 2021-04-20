@@ -1,11 +1,13 @@
 package com.icf.icf_next_Project.entity;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -46,6 +48,27 @@ public class Employee_Registeration
 	@Temporal(TemporalType.DATE)
 	@Column(name = "enddate",nullable = false)
 	private Date endDate;
+	
+	@OneToMany(mappedBy = "employee_Registeration")
+	private List<Dependents> dependents;
+	
+	@OneToMany(mappedBy = "employee_Registeration")
+	private List<Educational_Qualification> educational_Qualifications;
+	
+	public List<Dependents> getDependents() {
+		return dependents;
+	}
+	public void setDependents(List<Dependents> dependents) {
+		this.dependents = dependents;
+	}
+	
+	public List<Educational_Qualification> getEducational_Qualifications() {
+		return educational_Qualifications;
+	}
+	public void setEducational_Qualifications(List<Educational_Qualification> educational_Qualifications) {
+		this.educational_Qualifications = educational_Qualifications;
+	}
+	
 	public long getId() {
 		return id;
 	}

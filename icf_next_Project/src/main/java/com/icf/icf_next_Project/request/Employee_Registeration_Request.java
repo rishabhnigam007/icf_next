@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -14,28 +15,28 @@ public class Employee_Registeration_Request
 	@NotNull
 	private int reportingManagerId;
 	@NotEmpty(message = "first name cant be null")
-	@NotEmpty(message = "first name cant be empty")
+	@NotBlank(message = "first name cant be empty")
 	private String fName;
 	@NotEmpty(message = "last name cant be null")
-	@NotEmpty(message = "last name cant be empty")
+	@NotBlank(message = "last name cant be empty")
 	private String lName;
 	@NotEmpty(message = "designation cant be null")
-	@NotEmpty(message = "designation cant be empty")
+	@NotBlank(message = "designation cant be empty")
 	private String designation;
 	@NotEmpty(message = "department cant be null")
-	@NotEmpty(message = "department cant be empty")
+	@NotBlank(message = "department cant be empty")
 	private String department;
 	@NotEmpty(message = "status cant be null")
-	@NotEmpty(message = "status cant be empty")
+	@NotBlank(message = "status cant be empty")
 	private String status;
 	@NotEmpty(message = "gender cant be null")
-	@NotEmpty(message = "gender cant be empty")
+	@NotBlank(message = "gender cant be empty")
 	private String gender;
 	@NotEmpty(message = "bloodGroup cant be null")
-	@NotEmpty(message = "bloodGroup cant be empty")
+	@NotBlank(message = "bloodGroup cant be empty")
 	private String bloodGroup;
 	@NotEmpty(message = "address cant be null")
-	@NotEmpty(message = "address cant be empty")
+	@NotBlank(message = "address cant be empty")
 	private String address;
 	@Temporal(TemporalType.DATE)
 	private Date dob;
@@ -43,6 +44,7 @@ public class Employee_Registeration_Request
 	private Date startDate;
 	@Temporal(TemporalType.DATE)
 	private Date endDate;
+	
 	public int getEmployementId() {
 		return employementId;
 	}

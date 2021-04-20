@@ -4,21 +4,22 @@ import java.util.Date;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 public class DependentsRequest 
 {
 	@NotEmpty(message = "first name cant be null")
-	@NotEmpty(message = "first name cant be empty")
+	@NotBlank(message = "first name cant be empty")
 	private String firstName;
 	@NotEmpty(message = "last name cant be null")
-	@NotEmpty(message = "last name cant be empty")
+	@NotBlank(message = "last name cant be empty")
 	private String lastName;
 	@NotEmpty(message = "gender cant be null")
-	@NotEmpty(message = "gender cant be empty")
+	@NotBlank(message = "gender cant be empty")
 	private String gender;
 	@NotEmpty(message = "relationship cant be null")
-	@NotEmpty(message = "relationship cant be empty")
+	@NotBlank(message = "relationship cant be empty")
 	private String relationship;
 	@Temporal(TemporalType.DATE)
 	private Date dob;

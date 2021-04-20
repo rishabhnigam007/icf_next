@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -33,6 +34,25 @@ public class Educational_Qualification
 	private String institutionAddress;
 	@Column(name = "percentage" ,nullable = false)
 	private int percentage;
+	
+	private long id;
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	
+	@ManyToOne
+	private Employee_Registeration employee_Registeration;
+	
+	public Employee_Registeration getEmployee_Registeration() {
+		return employee_Registeration;
+	}
+	public void setEmployee_Registeration(Employee_Registeration employee_Registeration) {
+		this.employee_Registeration = employee_Registeration;
+	}
 	
 	public long getEid() {
 		return eid;

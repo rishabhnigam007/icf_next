@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,6 +30,16 @@ public class Dependents
 	@Column(name = "dob", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date dob;
+	
+	@ManyToOne
+	private Employee_Registeration employee_Registeration;
+	
+	public Employee_Registeration getEmployee_Registeration() {
+		return employee_Registeration;
+	}
+	public void setEmployee_Registeration(Employee_Registeration employee_Registeration) {
+		this.employee_Registeration = employee_Registeration;
+	}
 	
 	public long getDependentid() {
 		return dependentid;
