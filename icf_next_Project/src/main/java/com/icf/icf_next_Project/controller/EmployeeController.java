@@ -1,6 +1,9 @@
 package com.icf.icf_next_Project.controller;
 
 import javax.validation.Valid;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,12 +31,15 @@ public class EmployeeController
 	@Autowired(required = true)
 	private EmployeeRepository er;
 	
+	public Logger logger=LoggerFactory.getLogger(EmployeeController.class);
+	
 	/* ---   Create Operation Perform   --- */
 	/* ---   Registeration Module Completed   --- */
 	
 	@PostMapping("/register")
 	public ResponseEntity<Object> register(@Valid @RequestBody Employee_Registeration_Request err)
 	{
+		logger.trace("Employee Registeration Started..!!");
 		Employee_Registeration er=es.register(err);
 		return new ResponseEntity<>("Employee is created successfully with Employementid : "+er.getEmployementId(),HttpStatus.CREATED);
 	}
@@ -47,10 +53,12 @@ public class EmployeeController
 		int isEmployeeExist =es.isEmployeeExists(elr.getFname(),elr.getLname(),elr.getEmployementId());
 		if(isEmployeeExist>0)
 		{
+			logger.trace("Employee Login..!!");
 			return new ResponseEntity<>("Employee successfully login with -->"+"\n"+"EmployementID : "+elr.getEmployementId() +"\nFirst Name : " + elr.getFname()+"\nLast Name : "+elr.getLname(),HttpStatus.OK);
 		}
 		else
 		{
+			logger.trace("Employee Not Login..!!");
 			throw new EmployeeNotfoundException();
 		}
 	}
@@ -61,6 +69,7 @@ public class EmployeeController
 	@GetMapping("/allemployees")
 	public String getAllEmployee()
 	{
+		logger.trace("List of all Employee..!!");
 		return er.findAll().toString();
 	}
 	
@@ -70,6 +79,7 @@ public class EmployeeController
 	@GetMapping("/getbyid/{id}")
 	public String getEmployeeById(@PathVariable("id") long id)
 	{
+		logger.trace("Employee Check by ID..!!");
 		return es.getEmployeeById(id);
 	}
 	
@@ -82,10 +92,12 @@ public class EmployeeController
 		try
 		{
 			er.deleteById(id);
+			logger.trace("Employee Delete by ID..!!");
 			return new ResponseEntity<>("Employee successfully deleted by Id : "+id,HttpStatus.OK);
 		}
 		catch (Exception e) 
 		{
+			logger.trace("Employee Delete by ID is not Successfull..!!");
 			throw new EmployeeNotfoundException();
 		}
 	}
@@ -102,15 +114,18 @@ public class EmployeeController
 			if(x>0)
 			{
 				er.deleteAll();
+				logger.trace("All Employee Deleted..!!");
 				return new ResponseEntity<>("All Employee successfully Deleted !! ",HttpStatus.OK);
 			}
 			else
 			{
+				logger.trace("All Employee Not Deleted..!!");
 				throw new EmployeeNotfoundException();
 			}
 		}
 		catch (Exception e) 
 		{
+			logger.trace("Employee Not Found..!!");
 			throw new EmployeeNotfoundException();
 		}
 	}
@@ -121,6 +136,7 @@ public class EmployeeController
 	@PutMapping("/update/{id}")
 	public Employee_Registeration updateEmployee(@Valid @RequestBody Employee_Registeration err, @PathVariable("id") long id)
 	{
+		logger.trace("Employee Update by ID..!!");
 		return es.update(err,id);
 	}
 	
