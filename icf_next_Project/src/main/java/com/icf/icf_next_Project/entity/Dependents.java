@@ -7,13 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "dependents")
+@Table(name = "dependents",indexes = @Index(name="dependents_index",columnList = "dependentid"))
 public class Dependents 
 {
 	@Id
@@ -32,6 +34,7 @@ public class Dependents
 	private Date dob;
 	
 	@ManyToOne
+	@JoinColumn(name = "eid")
 	private Employee_Registeration employee_Registeration;
 	
 	public Employee_Registeration getEmployee_Registeration() {

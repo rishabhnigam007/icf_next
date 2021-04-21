@@ -31,6 +31,12 @@ public class EmployeeController
 	@Autowired(required = true)
 	private EmployeeRepository er;
 	
+	@GetMapping("/")
+	public String home()
+	{
+		return "<h1><center>Welcome </br> You Are Successfully Login..!!</center></h1>";
+	}
+	
 	public Logger logger=LoggerFactory.getLogger(EmployeeController.class);
 	
 	/* ---   Create Operation Perform   --- */

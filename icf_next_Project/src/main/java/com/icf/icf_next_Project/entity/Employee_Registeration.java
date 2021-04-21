@@ -1,23 +1,28 @@
 package com.icf.icf_next_Project.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "employee_registeration")
+@Table(name = "employee_registeration",indexes = @Index(name="employee_index",columnList = "employementId"))
 public class Employee_Registeration 
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "eid")
 	private long id;
 	@Column(name = "employementid",length = 20,nullable = false)
 	private int employementId;
@@ -49,11 +54,11 @@ public class Employee_Registeration
 	@Column(name = "enddate",nullable = false)
 	private Date endDate;
 	
-	@OneToMany(mappedBy = "employee_Registeration")
-	private List<Dependents> dependents;
+	@OneToMany(mappedBy = "employee_Registeration",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	private List<Dependents> dependents = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "employee_Registeration")
-	private List<Educational_Qualification> educational_Qualifications;
+	@OneToMany(mappedBy = "employee_Registeration",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	private List<Educational_Qualification> educational_Qualifications = new ArrayList<>();
 	
 	public List<Dependents> getDependents() {
 		return dependents;
@@ -61,14 +66,12 @@ public class Employee_Registeration
 	public void setDependents(List<Dependents> dependents) {
 		this.dependents = dependents;
 	}
-	
 	public List<Educational_Qualification> getEducational_Qualifications() {
 		return educational_Qualifications;
 	}
 	public void setEducational_Qualifications(List<Educational_Qualification> educational_Qualifications) {
 		this.educational_Qualifications = educational_Qualifications;
 	}
-	
 	public long getId() {
 		return id;
 	}
