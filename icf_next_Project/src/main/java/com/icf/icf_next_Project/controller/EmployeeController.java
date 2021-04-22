@@ -1,7 +1,6 @@
 package com.icf.icf_next_Project.controller;
 
 import javax.validation.Valid;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,13 +53,14 @@ public class EmployeeController
 	/* ---   Login Module Completed   --- */
 	
 	@PostMapping("/login")
-	public ResponseEntity<Object> isEmployeeExists(@Valid @RequestBody EmployeeLoginRequest elr)
+	public String isEmployeeExists(@Valid @RequestBody EmployeeLoginRequest elr)
 	{
 		int isEmployeeExist =es.isEmployeeExists(elr.getFname(),elr.getLname(),elr.getEmployementId());
 		if(isEmployeeExist>0)
 		{
 			logger.trace("Employee Login..!!");
-			return new ResponseEntity<>("Employee successfully login with -->"+"\n"+"EmployementID : "+elr.getEmployementId() +"\nFirst Name : " + elr.getFname()+"\nLast Name : "+elr.getLname(),HttpStatus.OK);
+			new ResponseEntity<>("Employee successfully login with -->"+"\n"+"EmployementID : "+elr.getEmployementId() +"\nFirst Name : " + elr.getFname()+"\nLast Name : "+elr.getLname(),HttpStatus.OK);
+			return "login";
 		}
 		else
 		{
