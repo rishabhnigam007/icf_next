@@ -185,6 +185,5 @@ public class Employee_Registeration
 				+ ", department=" + department + ", status=" + status + ", gender=" + gender + ", bloodGroup="
 				+ bloodGroup + ", address=" + address + ", dob=" + dob + ", startDate=" + startDate + ", endDate="
 				+ endDate + "]";
-	}	
-	
+	}		
 }
