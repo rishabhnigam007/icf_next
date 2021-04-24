@@ -26,8 +26,6 @@ public class EducationalQualificationServiceImpl implements EducationalQualifica
 		equQualification.setPercentage(eqr.getPercentage());
 		equQualification.setStartDate(eqr.getStartDate());
 		equQualification.setEndDate(eqr.getEndDate());
-//		er.find
-//		equQualification.setId();
 		return eqrepo.save(equQualification);
 	}
 }
