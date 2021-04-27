@@ -33,7 +33,7 @@ public class EmployeeController
 	@GetMapping("/")
 	public String home()
 	{
-		return "<h1><center>Welcome </br> You Are Successfully Login..!!</center></h1>";
+		return "<h1><center>Welcome </br> Project Are Ready to Start..!!</center></h1>";
 	}
 	
 	public Logger logger=LoggerFactory.getLogger(EmployeeController.class);
@@ -53,14 +53,13 @@ public class EmployeeController
 	/* ---   Login Module Completed   --- */
 	
 	@PostMapping("/login")
-	public String isEmployeeExists(@Valid @RequestBody EmployeeLoginRequest elr)
+	public ResponseEntity<Object> isEmployeeExists(@Valid @RequestBody EmployeeLoginRequest elr)
 	{
 		int isEmployeeExist =es.isEmployeeExists(elr.getFname(),elr.getLname(),elr.getEmployementId());
 		if(isEmployeeExist>0)
 		{
 			logger.trace("Employee Login..!!");
-			new ResponseEntity<>("Employee successfully login with -->"+"\n"+"EmployementID : "+elr.getEmployementId() +"\nFirst Name : " + elr.getFname()+"\nLast Name : "+elr.getLname(),HttpStatus.OK);
-			return "login";
+			return new ResponseEntity<>("Employee successfully login with -->"+"\n"+"EmployementID : "+elr.getEmployementId() +"\nFirst Name : " + elr.getFname()+"\nLast Name : "+elr.getLname(),HttpStatus.OK);
 		}
 		else
 		{
